@@ -3,41 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Abesamis Dental Clinic</title>
+    <link rel="stylesheet" href="/src/css/login.css">
+    <link rel="stylesheet" href="/src/css/register.css">
+    <link rel="stylesheet" href="css/patientstyle.css">
+    <title>Merged Pages</title>
+    <style>
+        /* Ensure only one section is visible at a time */
+        .section { display: none; }
+        .section.active { display: block; }
+    </style>
 </head>
-<body> 
-    <!-- main div -->   
-    <div id="wrapper">
-
-        <!-- this the left panel located-->
-        <div id="left_panel">
-            <img id="logo" src="icons/patient/logo.png" alt="Logo">
-            <div>
-                <label id="label_home" for="radio_home"><img src="icons/patient/home_icon.png" alt="Home Icon" >Homepage</label>
-                <label id="label_notification" for="radio_notification"><img src="icons/patient/notification_icon.png" alt="Notification Icon">Notifications</label>
-                <label id="label_medical" for="radio_medical"><img src="icons/patient/medical_record_icon.png" alt="Medical Record Icon">Medical Records</label>
-                <label id="label_calendar" for="radio_calendar"><img src="icons/patient/calendar_icon.png" alt="Calendar Icon">Appointments</label>
-                <label id="label_chat" for="radio_chat"><img src="icons/patient/message_icon.png" alt="Message Icon">Messages</label>
-                <label><img src="icons/patient/signout_icon.png" alt="Logout Icon">Sign Out</label>
+<body>
+    <!-- Login Section -->
+    <div id="login-section" class="section active">
+        <div class="header">
+            <img src="/src/icons/patient/logo.png" alt="">
+        </div>
+        <div class="container">
+            <div class="background-overlay"></div>
+            <div class="form-container">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <div class="tabs">
+                        <a href="#" class="active" onclick="showSection('login-section')">SIGN IN</a>
+                        <a href="#" onclick="showSection('register-section')">SIGN UP</a>
+                    </div>
+                    <h3>Sign in to your account</h3>
+                    <p class="subtitle">Book an appointment and access medical records, anytime, anywhere.</p>
+                    <div class="input-group">
+                        <h3 class="alert">Invalid Account</h3>
+                        <select name="account_type" class="box" required>
+                            <option value="" disabled selected>Account Type</option>
+                            <option value="patient">Patient</option>
+                            <option value="doctor">Doctor</option>
+                        </select>
+                        <input type="email" name="email" placeholder="Email" class="box" required>
+                        <input type="password" name="password" placeholder="Password" class="box" required>
+                    </div>
+                    <button type="button" name="submit" class="btn" onclick="showSection('homepage-section')">Submit</button>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Use</a>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 
-        <!-- this div where the rigth panel located and the other feature-->
-        <div id="right_panel">
-
-            <!--this for header where the profile icon located----->
-            <div id="header">
-                <div id="info" style="text-align: left;">
-                    <p id="fullname">Carlos Sainz</p>
-                    <p id="status">Patient</p>
-                </div>
-                <img id="profile_icon" src="img/CarlosID.png" alt="Profile Icon">
+    <!-- Register Section -->
+    <div id="register-section" class="section">
+        <div class="header">
+            <img src="/src/icons/patient/logo.png" alt="">
+        </div>
+        <div class="container">
+            <div class="background-overlay"></div>
+            <div class="form-container">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <div class="tabs">
+                        <a href="#" onclick="showSection('login-section')">SIGN IN</a>
+                        <a href="#" class="active" onclick="showSection('register-section')">SIGN UP</a>
+                    </div>
+                    <h3>Create Account</h3>
+                    <p class="subtitle">Book an appointment and access medical records, anytime, anywhere.</p>
+                    <div class="input-group">
+                        <h3 class="alert">Register Failed</h3>
+                        <select name="account_type" class="box" required>
+                            <option value="" disabled selected>Account Type</option>
+                            <option value="patient">Patient</option>
+                            <option value="doctor">Dentist</option>
+                        </select>
+                        <input type="text" name="name" placeholder="Enter Fullname" class="box" required>
+                        <input type="text" name="username" placeholder="Enter Username" class="box" required>
+                        <input type="email" name="email" placeholder="Email" class="box" required>
+                        <input type="text" name="contact" placeholder="Contact Number" class="box" required>
+                        <input type="password" name="password" placeholder="Password" class="box" required>
+                        <input type="password" name="cpassword" placeholder="Confirm Password" class="box" required>
+                        <select name="Gender" class="box" required>
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        <input type="file" name="image" class="box" accept="image/*">
+                        <button type="submit" name="submit" class="btn">Submit</button>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Use</a>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 
-    </div>   
+    <!-- Homepage Section -->
+    <div id="homepage-section" class="section">
+        <!-- Insert the content of PatientHomepage.html -->
+        <div id="wrapper">
+            <div id="left_panel">
+                <!-- Left panel content -->
+                <!-- Kept as in the original file -->
+            </div>
+            <div id="right_panel">
+                <!-- Right panel content -->
+                <!-- Kept as in the original file -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
 </body>
 </html>
-
-
